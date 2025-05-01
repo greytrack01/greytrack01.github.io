@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grey Track</title>
+    <!-- 网站图标 -->
+    <link rel="icon" href="images/rose.svg" type="image/svg+xml">
+    <!-- 引入自定义样式表 -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 背景模糊效果层 -->
+    <div class="background-blur"></div>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 左侧区域：包含个人信息、动画和社交链接 -->
+        <div class="left-section">
+            <!-- 个人资料区域 -->
+            <div class="profile">
+                <!-- 头像容器 -->
+                <div class="avatar-container">
+                    <img src="images/01.jpg" alt="头像" class="avatar">
+                </div>
+                <!-- 用户名称 -->
+                <h1 class="name">76</h1>
+                <!-- 每日一言容器 -->
+                <div class="quote-container">
+                    <p class="quote-text"></p>
+                </div>
+            </div>
+            
+            <!-- 贪吃蛇动画区域 -->
+            <div class="snake-animation">
+                <div class="graph-container">
+                <div class="graph-row">
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                </div>
+                <div class="graph-row">
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                    <div class="graph-cell"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 社交媒体链接区域 -->
+        <div class="social-links">
+            <!-- 动画效果容器 -->
+            <div class="animation-container">
+                <div class="light-effect"></div>
+            </div>
+            <!-- GitHub链接 -->
+            <a href="https://github.com/greytrack01" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <!-- 邮件链接 -->
+            <a href="mailto:byte76@126.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <!-- QQ二维码触发按钮 -->
+            <div class="social-link qr-trigger" id="qq-qr-btn">
+                <i class="fab fa-qq"></i>
+            </div>
+            <!-- 赞赏码二维码触发按钮 -->
+            <div class="social-link qr-trigger" id="zsm-qr-btn">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+        </div>
+
+        <!-- 博客和简历按钮区域 -->
+        <div class="blog-buttons-vertical">
+            <a href="https://bytelife7676.github.io" target="_blank" rel="noopener" class="blog-button">博客</a>
+            <a href="#" target="_blank" rel="noopener" class="blog-button">个人简历</a>
+        </div>
+        </div>
+        
+        <div class="right-section">
+            <div class="content-wrapper">
+                <!-- 资源模块：展示有用的开发资源链接 -->
+                <div class="resource-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-cube"></i>
+                        资源
+                    </h2>
+                    <div class="resource-grid">
+                        <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener" class="resource-card">
+                            <h3>MDN Web 文档</h3>
+                            <p>最全面的 Web 技术文档和学习资源</p>
+                        </a>
+                        <a href="https://roadmap.sh/" target="_blank" rel="noopener" class="resource-card">
+                            <h3>技术路线图</h3>
+                            <p>开发者学习路线图和成长指南</p>
+                        </a>
+                        <a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener" class="resource-card">
+                            <h3>神奇工具箱</h3>
+                            <p>精选的开发工具和资源列表</p>
+                        </a>
+                        <a href="https://stackoverflow.com/" target="_blank" rel="noopener" class="resource-card">
+                            <h3>Stack Overflow</h3>
+                            <p>全球最大的程序员问答社区</p>
+                        </a>
+                        <a href="https://github.com/trending" target="_blank" rel="noopener" class="resource-card">
+                            <h3>GitHub 趋势</h3>
+                            <p>发现最热门的开源项目和新技术</p>
+                        </a>
+                        <a href="https://leetcode.cn/" target="_blank" rel="noopener" class="resource-card">
+                            <h3>算法训练</h3>
+                            <p>提升编程能力的算法题库平台</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 项目模块：展示个人项目 -->
+                <div class="projects-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-project-diagram"></i>
+                        项目
+                    </h2>
+                    <div class="projects-grid">
+                        <a href="#" class="project-card" target="_blank" rel="noopener">
+                            <h3>个人引导页</h3>
+                            <p>和 Cursor 捣鼓的个人引导页</p>
+                        </a>
+                        <a href="https://www.example.com/" class="project-card" target="_blank" rel="noopener">
+                            <h3>进行中...</h3>
+                            <p>Hello</p>
+                        </a>
+                        <a href="https://www.example.com/" class="project-card" target="_blank" rel="noopener">
+                            <h3>进行中...</h3>
+                            <p>World</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 技能模块：展示个人技术栈 -->
+                <div class="skills-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-code"></i>
+                        技能
+                    </h2>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="Linux">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+                            <span>Linux</span>
+                        </div>
+                        <div class="skill-item" data-skill="Kubernetes">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
+                            <span>K8s</span>
+                        </div>
+                        <div class="skill-item" data-skill="Docker">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item" data-skill="Kafka">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="Kafka" />
+                            <span>Kafka</span>
+                        </div>
+                        <div class="skill-item" data-skill="MySQL">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item" data-skill="Redis">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />
+                            <span>Redis</span>
+                        </div>
+                        <div class="skill-item" data-skill="GitHub">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+                            <span>GitHub</span>
+                        </div>
+                        <div class="skill-item" data-skill="VSCode">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode" />
+                            <span>VSCode</span>
+                        </div>
+                        <div class="skill-item" data-skill="Git">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item" data-skill="Python">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item" data-skill="Shell">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Shell" />
+                            <span>Shell</span>
+                        </div>
+                        <div class="skill-item" data-skill="HTML5">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item" data-skill="CSS3">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item" data-skill="JavaScript">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item" data-skill="Go">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" />
+                            <span>Go</span>
+                        </div>
+                        <div class="skill-item" data-skill="Nginx">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Nginx" />
+                            <span>Nginx</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局二维码弹窗：用于显示QQ和赞赏码二维码 -->
+    <div id="qr-modal" style="display:none;">
+        <div class="qr-modal-mask"></div>
+        <div class="qr-modal-content">
+            <span class="qr-modal-close">×</span>
+            <img id="qr-modal-img" src="" alt="二维码" />
+        </div>
+    </div>
+
+    <!-- 引入JavaScript脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>
