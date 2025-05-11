@@ -1,0 +1,818 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    position: relative;
+}
+
+/* 添加白天模式的现代感薄荷色渐变背景 */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    z-index: -1;
+    transition: background 0.5s ease;
+}
+
+/* 覆盖层样式 - 只模糊导航栏菜单以外的区域 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* 移除背景颜色 */
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 当导航菜单激活时模糊容器 */
+#mainContainer.blur {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    transition: filter 0.3s ease;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: filter 0.3s ease;
+}
+
+/* 隐藏元素的样式 */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: auto;
+    max-width: 350px;
+    max-height: 70vh;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow: auto;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.qr-code {
+    max-width: 100%;
+    width: 250px;
+    height: auto;
+    margin: 15px auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* 头像样式 */
+.avatar-container {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+/* 名称样式 */
+.name {
+    margin-top: 1.2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+    color: #ffffff;
+    /* 移除浮动动画 */
+    -webkit-box-reflect: below 5px linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+/* 名称悬停效果 */
+.name:hover {
+    transform: scale(1.05);
+    /* 移除颜色变化 */
+    transition: transform 0.3s ease;
+}
+
+/* 主题切换部分容器 */
+.theme-section {
+    margin-top: 50px; /* 留出足够空间给名称的倒影 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 按钮容器 */
+.buttons-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+/* 日月切换按钮 */
+.theme-toggle {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sun-moon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    color: #333;
+    transition: transform 0.5s ease;
+}
+
+.sun, .moon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sun {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.moon {
+    opacity: 0;
+    transform: scale(0.5) rotate(45deg);
+}
+
+/* 暗色模式样式 */
+body.dark-mode {
+    background-color: #121212;
+}
+
+/* 暗色模式的渐变背景 */
+body.dark-mode::before {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    opacity: 0.9;
+}
+
+/* 暗色模式下的导航卡片样式 */
+body.dark-mode .nav-card {
+    background-color: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+}
+
+/* 暗色模式下的选项卡样式 */
+body.dark-mode .tab {
+    color: #aaa;
+}
+
+body.dark-mode .tab:hover,
+body.dark-mode .tab.active {
+    color: #fff;
+}
+
+/* 暗色模式下的滑块指示器 */
+body.dark-mode .nav-tabs::after {
+    background-color: #4fc3f7;
+}
+
+/* 暗色模式下的卡片样式 */
+body.dark-mode .card {
+    background-color: #2a2a2a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: #e0e0e0;
+}
+
+body.dark-mode .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .card-title {
+    color: #fff;
+}
+
+body.dark-mode .card-desc {
+    color: #bbb;
+}
+
+body.dark-mode .card-link {
+    color: #4fc3f7;
+}
+
+/* 暗色模式下的关闭按钮 */
+body.dark-mode .close-btn {
+    background-color: #444;
+    color: #ddd;
+}
+
+body.dark-mode .close-btn:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+/* 暗色模式下的分界线 */
+body.dark-mode .divider {
+    background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.8), transparent);
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+}
+
+body.dark-mode .theme-toggle {
+    background: linear-gradient(135deg, #2c3e50 0%, #4a5568 100%);
+}
+
+body.dark-mode .sun-moon {
+    color: #f1f1f1;
+}
+
+body.dark-mode .sun {
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+}
+
+body.dark-mode .moon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+/* 分界线样式 */
+.divider {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    margin: 0 auto 15px auto;
+    position: relative;
+    border-radius: 1.5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: dividerGlow 3s infinite alternate;
+}
+
+@keyframes dividerGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        opacity: 0.7;
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        opacity: 1;
+    }
+}
+
+/* 博客链接样式 */
+.blog-link {
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #3f51b5, #00bcd4, #4caf50);
+    background-size: 200% 200%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.blog-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff4081, #7c4dff, #448aff);
+    background-size: 200% 200%;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.blog-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.blog-link:hover::before {
+    opacity: 1;
+}
+
+.blog-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 博客按钮动画 */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.blog-link, .blog-link::before {
+    animation: gradientMove 6s ease infinite;
+}
+
+/* 渐变文字动画 */
+@keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 兼容性前缀 */
+@-webkit-keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 移动端触摸反馈样式 */
+.touch-active {
+    transform: scale(0.97);
+    opacity: 0.9;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* 定义移动端媒体查询 */
+@media (max-width: 768px) {
+    /* 移动端上的卡片网格调整 */
+    .card-grid {
+        grid-template-columns: 1fr; /* 移动端单列显示 */
+        gap: 0.8rem;
+    }
+    
+    /* 移动端上的导航卡片调整 */
+    .nav-card {
+        width: 90%;
+        max-width: none;
+    }
+    
+    /* 增大移动端上的交互元素点击区域 */
+    .tab, .card-link, .close-btn, .theme-toggle {
+        padding: 10px;
+        margin: 2px;
+    }
+    
+    /* 调整移动端上的滑块指示器位置 */
+    .nav-tabs.tab1::after {
+        left: 0.5rem;
+        width: 3rem;
+    }
+    
+    .nav-tabs.tab2::after {
+        left: 4.5rem;
+        width: 3rem;
+    }
+    
+    .nav-tabs.tab3::after {
+        left: 8.5rem;
+        width: 3rem;
+    }
+}
+
+/* 浮动动画 */
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 箭头样式 */
+.arrow-container {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.arrow {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.arrow:hover {
+    background-color: #fff;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.arrow.active {
+    transform: rotate(180deg);
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.arrow svg {
+    width: 28px;
+    height: 28px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.arrow:hover svg {
+    color: #1e88e5;
+}
+
+/* 导航卡片样式 */
+.nav-card {
+    position: fixed; /* 使用fixed定位而不是absolute */
+    bottom: -800px; /* 大幅增加高度，使卡片可以向下拉长 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%; /* 减小宽度 */
+    max-width: 700px;
+    height: 520px; /* 固定高度，与资源选项卡片大小相同 */
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #333;
+    z-index: 9999; /* 提高z-index值确保在最上层 */
+    overflow-y: auto; /* 允许垂直滚动 */
+    /* 确保导航卡片保持清晰 */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-card.active {
+    bottom: 50px;
+}
+
+/* 选项卡样式 */
+.nav-tabs {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    position: relative;
+}
+
+.tab {
+    padding: 0.5rem 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 0.95rem;
+    z-index: 1;
+}
+
+.tab:hover {
+    color: #333;
+}
+
+.tab.active {
+    color: #333;
+}
+
+/* 添加滑块指示器 */
+.nav-tabs::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #a1c4fd;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* 弹性过渡效果 */
+    z-index: 0;
+}
+
+/* 滑块指示器的样式类，将通过JavaScript动态添加 */
+.nav-tabs.tab1::after {
+    left: 0.5rem;
+    width: 4rem;
+}
+
+.nav-tabs.tab2::after {
+    left: 6.5rem;
+    width: 4rem;
+}
+
+.nav-tabs.tab3::after {
+    left: 12.5rem;
+    width: 6rem;
+}
+
+/* 选项卡内容样式 */
+.tab-content {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+    padding: 0.5rem 0;
+    left: 0;
+    right: 0;
+    max-height: 400px; /* 设置最大高度，超过时显示滚动条 */
+    overflow-y: auto; /* 启用垂直滚动 */
+    scrollbar-width: thin; /* Firefox浏览器的细滚动条 */
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Firefox滚动条颜色 */
+}
+
+.tab-content.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+}
+
+/* 自定义滚动条样式 - Webkit浏览器 */
+.tab-content::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.tab-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.tab-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* 暗色模式下的滚动条样式 */
+body.dark-mode .tab-content {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent; /* Firefox */
+}
+
+body.dark-mode .tab-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .tab-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 内容容器样式 */
+.nav-content {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* 关闭按钮 */
+.nav-card .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.nav-card .close-btn:hover {
+    background-color: #f44336;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 卡片网格样式 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 每行显示2张卡片 */
+    gap: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    min-height: 100%; /* 确保卡片网格至少填满容器 */
+    /* 移除卡片网格的滚动条，使用选项卡内容的滚动条 */
+    overflow: visible;
+}
+
+/* 卡片样式 */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 120px; /* 增加高度，使卡片更加平衡 */
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 隐藏卡片图标 */
+.card-icon {
+    display: none;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+    width: 100%;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+    flex-grow: 1;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* 添加标准属性以实现兼容性 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-link {
+    color: #a1c4fd;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.8rem;
+    align-self: flex-end;
+    transition: color 0.3s ease;
+    margin-top: auto;
+}
+
+.card-link:hover {
+    color: #66a6ff;
+    text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .nav-card {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    
+    .nav-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .nav-card {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    .nav-icon {
+        width: 40px;
+        height: 40px;
+    }
+}

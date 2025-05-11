@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>积云蟹🦀</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/rose.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <!-- 头像部分 -->
+        <div class="avatar-container">
+            <img src="images/01.jpg" alt="个人头像" class="avatar">
+            <h1 class="name">积云蟹</h1>
+        </div>
+        
+        <!-- 分界线和主题切换按钮 -->
+        <div class="theme-section">
+            <div class="divider"></div>
+            <div class="buttons-container">
+                <button id="theme-toggle" class="theme-toggle" title="切换明暗模式">
+                    <span class="sun-moon">
+                        <svg class="sun" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 12L2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M22 12L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19.7782 4.22183L18.364 5.63604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.63608 18.364L4.22187 19.7782" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19.7782 19.7782L18.364 18.364" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.63608 5.63603L4.22187 4.22182" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <svg class="moon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 箭头部分 -->
+        <div class="arrow-container">
+            <div class="arrow" id="toggleNav">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
+                    <path fill="none" d="M0 0h24v24H0z"/>
+                    <path d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.3639L11.9997 8L18.3637 14.3639L16.9495 15.7782L11.9997 10.8284Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <!-- 背景模糊覆盖层 -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- 二维码弹窗 -->
+    <div class="modal" id="qrModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>扫码添加QQ好友</h3>
+            <img src="images/qq.png" alt="QQ二维码" class="qr-code">
+        </div>
+    </div>
+    
+    <!-- 导航卡片 -->
+    <div class="nav-card" id="navCard">
+        <div class="close-btn" id="closeNav"></div>
+        <div class="nav-content">
+            <div class="nav-tabs">
+                <div class="tab active" data-tab="projects">项目</div>
+                <div class="tab" data-tab="resources">资源</div>
+                <div class="tab" data-tab="contact">联系</div>
+            </div>
+            
+            <!-- 项目选项卡片 -->
+            <div class="tab-content active" id="projects">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">个人引导页</div>
+                            <div class="card-desc">使用HTML/CSS/JS构建的响应式个人引导页</div>
+                            <a href="#" class="card-link">查看详情</a>
+                        </div>
+                    </div>
+                    
+
+                    
+                </div>
+            </div>
+            
+            <!-- 资源选项卡片 -->
+            <div class="tab-content" id="resources">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">AWS 官方文档</div>
+                            <div class="card-desc">了解Amazon Web Services的各种服务和最佳实践</div>
+                            <a href="https://docs.aws.amazon.com/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Azure 学习路径</div>
+                            <div class="card-desc">微软云平台的官方学习资源和认证路径</div>
+                            <a href="https://learn.microsoft.com/azure/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Google Cloud 技能提升</div>
+                            <div class="card-desc">Google云平台的学习资源和认证课程</div>
+                            <a href="https://cloud.google.com/learn" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Kubernetes 文档</div>
+                            <div class="card-desc">容器编排平台的官方文档和学习资源</div>
+                            <a href="https://kubernetes.io/docs/home/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Docker 学习中心</div>
+                            <div class="card-desc">容器化技术的文档和教程资源</div>
+                            <a href="https://docs.docker.com/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Terraform 文档</div>
+                            <div class="card-desc">基础设施即代码工具的官方文档和模块资源</div>
+                            <a href="https://www.terraform.io/docs" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 联系方式选项卡片 -->
+            <div class="tab-content" id="contact">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">邮箱联系</div>
+                            <div class="card-desc">发送邮件到我的专业邮箱</div>
+                            <a href="mailto:byte76@126.com" class="card-link">发送邮件</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Github</div>
+                            <div class="card-desc">查看我的开源项目和代码贡献</div>
+                            <a href="https://github.com/greytrack01" target="_blank" class="card-link">访问 Github</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">QQ联系</div>
+                            <div class="card-desc">通过QQ进行在线交流</div>
+                            <a href="javascript:void(0);" id="showQRCode" class="card-link">扫码添加</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">博客</div>
+                            <div class="card-desc">访问我的个人博客</div>
+                            <a href="https://example.com" target="_blank" class="card-link">查看博客</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
