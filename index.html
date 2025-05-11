@@ -3,290 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grey Track</title>
-    <!-- 网站图标 -->
+    <title>积云蟹🦀</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/rose.svg" type="image/svg+xml">
-    <!-- 引入自定义样式表 -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- 引入Font Awesome图标库 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- 背景模糊效果层 -->
-    <div class="background-blur"></div>
-    <!-- 主容器 -->
-    <div class="container">
-        <!-- 左侧区域：包含个人信息、动画和社交链接 -->
-        <div class="left-section">
-            <!-- 个人资料区域 -->
-            <div class="profile">
-                <!-- 头像容器 -->
-                <div class="avatar-container">
-                    <img src="images/01.jpg" alt="头像" class="avatar">
-                </div>
-                <!-- 用户名称 -->
-                <h1 class="name">76</h1>
-                <!-- 每日一言容器 -->
-                <div class="quote-container">
-                    <p class="quote-text"></p>
+    <div class="container" id="mainContainer">
+        <!-- 头像部分 -->
+        <div class="avatar-container">
+            <img src="images/01.jpg" alt="个人头像" class="avatar">
+            <h1 class="name">积云蟹</h1>
+        </div>
+        
+        <!-- 分界线和主题切换按钮 -->
+        <div class="theme-section">
+            <div class="divider"></div>
+            <div class="buttons-container">
+                <button id="theme-toggle" class="theme-toggle" title="切换明暗模式">
+                    <span class="sun-moon">
+                        <svg class="sun" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M4 12L2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M22 12L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19.7782 4.22183L18.364 5.63604" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.63608 18.364L4.22187 19.7782" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19.7782 19.7782L18.364 18.364" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5.63608 5.63603L4.22187 4.22182" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <svg class="moon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 箭头部分 -->
+        <div class="arrow-container">
+            <div class="arrow" id="toggleNav">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
+                    <path fill="none" d="M0 0h24v24H0z"/>
+                    <path d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.3639L11.9997 8L18.3637 14.3639L16.9495 15.7782L11.9997 10.8284Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <!-- 背景模糊覆盖层 -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- 二维码弹窗 -->
+    <div class="modal" id="qrModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>扫码添加QQ好友</h3>
+            <img src="images/qq.png" alt="QQ二维码" class="qr-code">
+        </div>
+    </div>
+    
+    <!-- 导航卡片 -->
+    <div class="nav-card" id="navCard">
+        <div class="close-btn" id="closeNav"></div>
+        <div class="nav-content">
+            <div class="nav-tabs">
+                <div class="tab active" data-tab="projects">项目</div>
+                <div class="tab" data-tab="resources">资源</div>
+                <div class="tab" data-tab="contact">联系</div>
+            </div>
+            
+            <!-- 项目选项卡片 -->
+            <div class="tab-content active" id="projects">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">个人引导页</div>
+                            <div class="card-desc">使用HTML/CSS/JS构建的响应式个人引导页</div>
+                            <a href="#" class="card-link">查看详情</a>
+                        </div>
+                    </div>
+                    
+
+                    
                 </div>
             </div>
             
-            <!-- 贪吃蛇动画区域 -->
-            <div class="snake-animation">
-                <div class="graph-container">
-                <div class="graph-row">
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                </div>
-                <div class="graph-row">
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                </div>
-                <div class="graph-row">
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                </div>
-                <div class="graph-row">
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                </div>
-                <div class="graph-row">
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                    <div class="graph-cell"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 社交媒体链接区域 -->
-        <div class="social-links">
-            <!-- 动画效果容器 -->
-            <div class="animation-container">
-                <div class="light-effect"></div>
-            </div>
-            <!-- GitHub链接 -->
-            <a href="https://github.com/greytrack01" target="_blank" rel="noopener" class="social-link">
-                <i class="fab fa-github"></i>
-            </a>
-            <!-- 邮件链接 -->
-            <a href="mailto:byte76@126.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <!-- QQ二维码触发按钮 -->
-            <div class="social-link qr-trigger" id="qq-qr-btn">
-                <i class="fab fa-qq"></i>
-            </div>
-            <!-- 赞赏码二维码触发按钮 -->
-            <div class="social-link qr-trigger" id="zsm-qr-btn">
-                <i class="fas fa-hand-holding-heart"></i>
-            </div>
-        </div>
-
-        <!-- 示例按钮区域 -->
-        <div class="blog-buttons-vertical">
-            <a href="#" target="_blank" rel="noopener" class="blog-button">demo</a>
-            <a href="#" target="_blank" rel="noopener" class="blog-button">demo</a>
-        </div>
-        </div>
-        
-        <div class="right-section">
-            <div class="content-wrapper">
-                <!-- 资源模块：展示有用的开发资源链接 -->
-                <div class="resource-section">
-                    <h2 class="section-title">
-                        <i class="fas fa-cube"></i>
-                        资源
-                    </h2>
-                    <div class="resource-grid">
-                        <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener" class="resource-card">
-                            <h3>MDN Web 文档</h3>
-                            <p>最全面的 Web 技术文档和学习资源</p>
-                        </a>
-                        <a href="https://roadmap.sh/" target="_blank" rel="noopener" class="resource-card">
-                            <h3>技术路线图</h3>
-                            <p>开发者学习路线图和成长指南</p>
-                        </a>
-                        <a href="https://github.com/sindresorhus/awesome" target="_blank" rel="noopener" class="resource-card">
-                            <h3>神奇工具箱</h3>
-                            <p>精选的开发工具和资源列表</p>
-                        </a>
-                        <a href="https://stackoverflow.com/" target="_blank" rel="noopener" class="resource-card">
-                            <h3>Stack Overflow</h3>
-                            <p>全球最大的程序员问答社区</p>
-                        </a>
-                        <a href="https://github.com/trending" target="_blank" rel="noopener" class="resource-card">
-                            <h3>GitHub 趋势</h3>
-                            <p>发现最热门的开源项目和新技术</p>
-                        </a>
-                        <a href="https://leetcode.cn/" target="_blank" rel="noopener" class="resource-card">
-                            <h3>算法训练</h3>
-                            <p>提升编程能力的算法题库平台</p>
-                        </a>
+            <!-- 资源选项卡片 -->
+            <div class="tab-content" id="resources">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">AWS 官方文档</div>
+                            <div class="card-desc">了解Amazon Web Services的各种服务和最佳实践</div>
+                            <a href="https://docs.aws.amazon.com/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Azure 学习路径</div>
+                            <div class="card-desc">微软云平台的官方学习资源和认证路径</div>
+                            <a href="https://learn.microsoft.com/azure/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Google Cloud 技能提升</div>
+                            <div class="card-desc">Google云平台的学习资源和认证课程</div>
+                            <a href="https://cloud.google.com/learn" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Kubernetes 文档</div>
+                            <div class="card-desc">容器编排平台的官方文档和学习资源</div>
+                            <a href="https://kubernetes.io/docs/home/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Docker 学习中心</div>
+                            <div class="card-desc">容器化技术的文档和教程资源</div>
+                            <a href="https://docs.docker.com/" target="_blank" class="card-link">访问资源</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Terraform 文档</div>
+                            <div class="card-desc">基础设施即代码工具的官方文档和模块资源</div>
+                            <a href="https://www.terraform.io/docs" target="_blank" class="card-link">访问资源</a>
+                        </div>
                     </div>
                 </div>
-
-                <!-- 项目模块：展示个人项目 -->
-                <div class="projects-section">
-                    <h2 class="section-title">
-                        <i class="fas fa-project-diagram"></i>
-                        项目
-                    </h2>
-                    <div class="projects-grid">
-                        <a href="#" class="project-card" target="_blank" rel="noopener">
-                            <h3>个人引导页</h3>
-                            <p>和 Cursor 捣鼓的个人引导页</p>
-                        </a>
-                        <a href="https://www.example.com/" class="project-card" target="_blank" rel="noopener">
-                            <h3>进行中...</h3>
-                            <p>Hello</p>
-                        </a>
-                        <a href="https://www.example.com/" class="project-card" target="_blank" rel="noopener">
-                            <h3>进行中...</h3>
-                            <p>World</p>
-                        </a>
+            </div>
+            
+            <!-- 联系方式选项卡片 -->
+            <div class="tab-content" id="contact">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">邮箱联系</div>
+                            <div class="card-desc">发送邮件到我的专业邮箱</div>
+                            <a href="mailto:byte76@126.com" class="card-link">发送邮件</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- 技能模块：展示个人技术栈 -->
-                <div class="skills-section">
-                    <h2 class="section-title">
-                        <i class="fas fa-code"></i>
-                        技能
-                    </h2>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-skill="Linux">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
-                            <span>Linux</span>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Github</div>
+                            <div class="card-desc">查看我的开源项目和代码贡献</div>
+                            <a href="https://github.com/greytrack01" target="_blank" class="card-link">访问 Github</a>
                         </div>
-                        <div class="skill-item" data-skill="Kubernetes">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
-                            <span>K8s</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">QQ联系</div>
+                            <div class="card-desc">通过QQ进行在线交流</div>
+                            <a href="javascript:void(0);" id="showQRCode" class="card-link">扫码添加</a>
                         </div>
-                        <div class="skill-item" data-skill="Docker">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-item" data-skill="Kafka">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="Kafka" />
-                            <span>Kafka</span>
-                        </div>
-                        <div class="skill-item" data-skill="MySQL">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-                            <span>MySQL</span>
-                        </div>
-                        <div class="skill-item" data-skill="Redis">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />
-                            <span>Redis</span>
-                        </div>
-                        <div class="skill-item" data-skill="GitHub">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
-                            <span>GitHub</span>
-                        </div>
-                        <div class="skill-item" data-skill="VSCode">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode" />
-                            <span>VSCode</span>
-                        </div>
-                        <div class="skill-item" data-skill="Git">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item" data-skill="Python">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item" data-skill="Shell">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Shell" />
-                            <span>Shell</span>
-                        </div>
-                        <div class="skill-item" data-skill="HTML5">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
-                            <span>HTML</span>
-                        </div>
-                        <div class="skill-item" data-skill="CSS3">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
-                            <span>CSS</span>
-                        </div>
-                        <div class="skill-item" data-skill="JavaScript">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-item" data-skill="Go">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" />
-                            <span>Go</span>
-                        </div>
-                        <div class="skill-item" data-skill="Nginx">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Nginx" />
-                            <span>Nginx</span>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">博客</div>
+                            <div class="card-desc">访问我的个人博客</div>
+                            <a href="https://example.com" target="_blank" class="card-link">查看博客</a>
                         </div>
                     </div>
                 </div>
@@ -294,16 +175,6 @@
         </div>
     </div>
 
-    <!-- 全局二维码弹窗：用于显示QQ和赞赏码二维码 -->
-    <div id="qr-modal" style="display:none;">
-        <div class="qr-modal-mask"></div>
-        <div class="qr-modal-content">
-            <span class="qr-modal-close">×</span>
-            <img id="qr-modal-img" src="" alt="二维码" />
-        </div>
-    </div>
-
-    <!-- 引入JavaScript脚本 -->
     <script src="script.js"></script>
 </body>
 </html>
